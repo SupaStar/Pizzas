@@ -1,0 +1,7 @@
+{
+  "name": "Uwu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
