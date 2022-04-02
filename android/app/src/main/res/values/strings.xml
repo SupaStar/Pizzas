@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Pizzas</string>
+    <string name="title_activity_main">Pizzas</string>
+    <string name="package_name">tienda.pizzas</string>
+    <string name="custom_url_scheme">tienda.pizzas</string>
+</resources>

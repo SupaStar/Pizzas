@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'nueva-pizza',
+    loadChildren: () => import('./modales/nueva-pizza/nueva-pizza.module').then( m => m.NuevaPizzaPageModule)
+  },
 ];
 
 @NgModule({

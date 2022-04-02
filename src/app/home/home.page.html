@@ -1,20 +1,105 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Comprar pizzas </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-grid style="margin-top: 1vh">
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="add()">Agregar pizza</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="limpiar()" style="margin-left: 18%"
+          >Limpiar</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let cat of categories"style="width: 60%;">
+      <img [src]="cat.img">
+    </ion-slide>
+  </ion-slides>
+  <div *ngIf="carrito.length>0" style="padding-bottom: 7vh; margin-top: 3vh">
+    <ion-grid *ngFor="let item of carrito;let i = index">
+      <ion-row>
+        <ion-col> Tamaño </ion-col>
+        <ion-col> Precio </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col> {{item.tamanio.nombre}} </ion-col>
+        <ion-col> {{item.tamanio.precio}} </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Borde</ion-col>
+        <ion-col>Precio</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{item.borde.nombre}}</ion-col>
+        <ion-col>{{item.borde.precio}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Bebida</ion-col>
+        <ion-col>Precio</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{item.bebida.nombre}}</ion-col>
+        <ion-col>{{item.bebida.precio}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Ingrediente</ion-col>
+        <ion-col>Precio</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{item.ingrediente.nombre}}</ion-col>
+        <ion-col>{{item.ingrediente.precio}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Entrega</ion-col>
+        <ion-col>Precio</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{item.entrega.nombre}}</ion-col>
+        <ion-col>{{item.entrega.precio}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Complemento</ion-col>
+        <ion-col>Precio</ion-col>
+        <ion-col>Cantidad</ion-col>
+        <ion-col>Total</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let complemento of item.complementos">
+        <ion-col>{{complemento.nombre}}</ion-col>
+        <ion-col>{{complemento.precio}}</ion-col>
+        <ion-col>{{complemento.cantidad}}</ion-col>
+        <ion-col>{{complemento.cantidad*complemento.precio}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>SubTotal</ion-col>
+        <ion-col>{{subtotal}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>IVA</ion-col>
+        <ion-col>{{iva}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Total</ion-col>
+        <ion-col>{{total}}</ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
+  <ion-button
+    *ngIf="mostrarCarro"
+    class="botonCarrito"
+    color="dark"
+    expand="full"
+    (click)="comprar()"
+    style="z-index: 15"
+  >
+    Comprar</ion-button
+  >
 </ion-content>

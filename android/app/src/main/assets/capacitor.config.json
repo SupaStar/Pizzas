@@ -1,0 +1,6 @@
+{
+	"appId": "tienda.pizzas",
+	"appName": "Pizzas",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

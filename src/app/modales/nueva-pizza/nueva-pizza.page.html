@@ -1,0 +1,237 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="false" [options]="slideOpt" #mySlider>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <h2>Tamaño</h2>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-radio-group [(ngModel)]="tamanio">
+            <ion-item *ngFor="let taman of tamanios">
+              <ion-label>{{taman.nombre}}</ion-label>
+              <ion-radio slot="start" value="{{taman.nombre}}"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-card-content>
+        <ion-img
+          src="assets/imgs/pizza.png"
+          style="width: 40%"
+          class="centrarImg"
+          *ngIf="tamanio==='Personal $20'"
+        ></ion-img>
+        <ion-img
+          src="assets/imgs/pizza.png"
+          style="width: 50%"
+          class="centrarImg"
+          *ngIf="tamanio==='Chica $40'"
+        ></ion-img>
+        <ion-img
+          src="assets/imgs/pizza.png"
+          style="width: 60%"
+          class="centrarImg"
+          *ngIf="tamanio==='Mediana $60'"
+        ></ion-img>
+        <ion-img
+          src="assets/imgs/pizza.png"
+          style="width: 70%"
+          class="centrarImg"
+          *ngIf="tamanio==='Grande $80'"
+        ></ion-img>
+        <ion-img
+          src="assets/imgs/pizza.png"
+          style="width: 100%"
+          class="centrarImg"
+          *ngIf="tamanio==='Extra $100'"
+        ></ion-img>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <h2>Borde</h2>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-radio-group [(ngModel)]="borde">
+            <ion-item *ngFor="let borde of bordes">
+              <ion-label>{{borde.nombre}}</ion-label>
+              <ion-radio slot="start" value="{{borde.nombre}}"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-card-content>
+        <ion-img
+          src="assets/imgs/orillaQueso.jpg"
+          class="centrarImg"
+          *ngIf="borde==='Queso $15'"
+        ></ion-img>
+        <ion-img
+          src="assets/imgs/ajonjoli.jpg"
+          class="centrarImg"
+          *ngIf="borde==='Ajonjolí $10'"
+        ></ion-img>
+        <ion-img
+          src="assets/imgs/normal.jpg"
+          class="centrarImg"
+          *ngIf="borde==='Normal $5'"
+        ></ion-img>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <h2>Complementos</h2>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>C. Papa a la francesa $25</ion-label>
+            <ion-checkbox
+              mode="ios"
+              slot="start"
+              value="Papas a la francesa"
+              style="--size: 20px"
+              (ionChange)="agregar($event)"
+            ></ion-checkbox>
+            <ion-thumbnail slot="end">
+              <img src="assets/imgs/extras/papasF.png" />
+            </ion-thumbnail>
+          </ion-item>
+          <ion-item>
+            <ion-label>C. Pan de ajo $20</ion-label>
+            <ion-checkbox
+              mode="ios"
+              slot="start"
+              value="Pan de ajo"
+              style="--size: 20px"
+              (ionChange)="agregar($event)"
+            ></ion-checkbox>
+            <ion-thumbnail slot="end">
+              <img src="assets/imgs/extras/panAjo.jpg" />
+            </ion-thumbnail>
+          </ion-item>
+          <ion-item>
+            <ion-label>C. Papas de hojuela $15</ion-label>
+            <ion-checkbox
+              mode="ios"
+              slot="start"
+              value="Papas de hojuela"
+              style="--size: 20px"
+              (ionChange)="agregar($event)"
+            ></ion-checkbox>
+            <ion-thumbnail slot="end">
+              <img src="assets/imgs/extras/papaH.webp" />
+            </ion-thumbnail>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <h2>Bebidas</h2>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-radio-group [(ngModel)]="bebida">
+            <ion-item *ngFor="let bebida of bebidas">
+              <ion-label>{{bebida.nombre}}</ion-label>
+              <ion-radio slot="start" value="{{bebida.nombre}}"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-card-content>
+      </ion-card>
+      <ion-img
+        src="assets/imgs/bebidas/pepsi.png"
+        class="centrarImg"
+        *ngIf="bebida==='Pepsi 1L $40'"
+        style="width: 90%"
+      ></ion-img>
+      <ion-img
+        src="assets/imgs/bebidas/manzana.png"
+        class="centrarImg"
+        *ngIf="bebida==='Manzana 1L $35'"
+      ></ion-img>
+      <ion-img
+        src="assets/imgs/bebidas/fuze.png"
+        class="centrarImg"
+        *ngIf="bebida==='Fuze tea 1L $38'"
+        style="width: 20%"
+      ></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <h2>Ingredientes</h2>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card-content>
+            <ion-radio-group [(ngModel)]="ingrediente">
+              <ion-item *ngFor="let ingrediente of ingredientes">
+                <ion-label>{{ingrediente.nombre}}</ion-label>
+                <ion-radio slot="start" value="{{ingrediente.nombre}}"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-card-content>
+        </ion-card-content>
+      </ion-card>
+      <ion-img
+        src="assets/imgs/ingredientes/peperoni.jpg"
+        class="centrarImg"
+        *ngIf="ingrediente==='Pepperoni $30'"
+      ></ion-img>
+      <ion-img
+        src="assets/imgs/ingredientes/hawaiana.jpg"
+        class="centrarImg"
+        *ngIf="ingrediente==='Hawaiana $45'"
+      ></ion-img>
+      <ion-img
+        src="assets/imgs/ingredientes/cuatro.jpg"
+        class="centrarImg"
+        *ngIf="ingrediente==='Cuatro quesos $40'"
+      ></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <h2>Entrega</h2>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-radio-group [(ngModel)]="entrega">
+            <ion-item *ngFor="let entrega of entregas">
+              <ion-label>{{entrega.nombre}}</ion-label>
+              <ion-radio slot="start" value="{{entrega.nombre}}"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <ion-button class="btnAtras" (click)="swipePrev()" *ngIf="nSlide>0">
+    Atrás
+  </ion-button>
+  <ion-button class="btnSiguiente" (click)="swipeNext()">
+    Siguiente
+  </ion-button>
+  <ion-button class="btnSiguiente" (click)="terminar()" *ngIf="nSlide===5">
+    Terminar
+  </ion-button>
+</ion-content>
